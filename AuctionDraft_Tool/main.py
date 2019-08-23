@@ -1,17 +1,25 @@
 from prompt_toolkit import prompt
 from prompt_toolkit.completion.word_completer import WordCompleter
-from app import players, my_team, fantasy_teams, master_dict, heir_dict
+from app import my_team, fantasy_teams, master_dict, heir_dict, major_starting_slots
+
+import pickle
+players = pickle.load(open('AuctionDraft_Tool/app/all_players.sav', 'rb'))
+
 
 def player_up(a_player: str):
-    # Need to autocomplete a_player
     name = players[a_player]['name']
     pos = players[a_player]['position']
-    pre_draft = str(players[a_player]['pre_draft$'])
+    espn_pre_draft = str(players[a_player]['espn_pre_draft$'])
+    fpros_pre_draft = str(players[a_player]['fpros_pre_draft$'])
+    #my_pre_draft = str(players[a_player]['my_pre_draft$'])
+    economy = refresh_fraction_economy()
 
-    print()
+    print('-'*41)
     print('PLAYER UP: ', name)
-    print('PRE_DRAFT: ', '$'+pre_draft)
-    print()
+    print('ESPN_PRE_DRAFT:  ', '$'+espn_pre_draft)
+    print('FPROS_PRE_DRAFT: ', '$'+fpros_pre_draft)
+    print('FRACTION OF $ REMAINING: ', economy)
+    print('-'*41)
 
     competing_teams = []
     for fantasy_team in fantasy_teams:
@@ -61,18 +69,20 @@ def player_bought(player: dict, fantasy_team: str, price_paid: int):
     #players.pop(player['name'])
     master_dict[fantasy_team]['budget'] -= price_paid
     master_dict[fantasy_team]['empty_slots'] -= 1
-    opp_budget = refresh_total_opp_budget()
+    economy = refresh_fraction_economy()
     #print('Begin insert_player...')
     insert_player(player, fantasy_team, price_paid)
-    print('Total All Opponent Budgets: ', opp_budget)
+    print('-'*41)
+    print('FRACTION OF $ REMAINING: ', economy)
+    print('-'*41)
 
 
-def refresh_total_opp_budget():
-    total_opp_budget = 0
+def refresh_fraction_economy():
+    starting_budget = len(fantasy_teams) * 200
+    total_remaining = 0
     for team in fantasy_teams:
-        if team != my_team:
-            total_opp_budget += master_dict[team]['budget']
-    return total_opp_budget
+        total_remaining += master_dict[team]['budget']
+    return round(total_remaining / starting_budget, 2)
 
 
 def insert_player(player: dict, fantasy_team: str, price_paid: int):
@@ -128,10 +138,12 @@ def shift_the_rest_down(this_player, heir_list, last_slot, fantasy_team, price_p
 
 def pretty_display(teams_to_display):
     for competition in teams_to_display:
-        print('Fantasy Team: ',  competition[0])
-        print('\tMax bid: '   ,  '$'+str(competition[1]))
-        print('\tMain slots: ',  str(competition[2]))
-        print('\tFlex slots: ',  str(competition[3]))
+        total_empty_slots = count_all_starter_slots(competition[0])
+        print(competition[0])
+        print('\t\tMax bid: ',  '$'+str(competition[1]), \
+              '\tPrimary slots: ', str(competition[2]), \
+              '\tFlex slots:    ', str(competition[3]), \
+              '\tTotal Starter Slots: ', total_empty_slots)
 
 def on_the_block_prompt():
     PlayerCompleter = WordCompleter(list(players.keys()),
@@ -164,6 +176,29 @@ def cost_prompt():
         print('Looking for an Integer, try again')
         return cost_prompt()
 
+def count_all_starter_slots(fantasy_team):
+    empty_count = 0
+    for slot in major_starting_slots:
+        if not master_dict[fantasy_team]['slots'][slot]['Player']:
+            empty_count += 1
+    return empty_count
+
+def count_missing_starters(fantasy_team):
+    missing_starters = {'QB': 0, 'RB': 0, 'WR': 0, 'TE': 0}
+    for slot in ['QB']:
+        if not master_dict[fantasy_team]['slots'][slot]['Player']:
+            missing_starters['QB'] += 1
+    for slot in ['RB1', 'RB2']:
+        if not master_dict[fantasy_team]['slots'][slot]['Player']:
+            missing_starters['RB'] += 1
+    for slot in ['WR1', 'WR2']:
+        if not master_dict[fantasy_team]['slots'][slot]['Player']:
+            missing_starters['WR'] += 1
+    for slot in ['TE']:
+        if not master_dict[fantasy_team]['slots'][slot]['Player']:
+            missing_starters['TE'] += 1
+    return missing_starters
+
 # WHERE THE ACTUAL PROGRAM GETS GOING !!!!! ----------------------------------------------------
 
 TeamCompleter = WordCompleter(fantasy_teams,
@@ -182,8 +217,9 @@ while running:
     player_bought(player_block_dict, bought_by, int(cost))
 
     for team in fantasy_teams:
+        missing_starters = count_missing_starters(team)
         # Sort by budget
         print(team)
-        print('Total Budget: ', str(master_dict[team]['budget']))
-        print('Slots Needed: ', str(master_dict[team]['empty_slots']))
-        print()
+        print(missing_starters, '\tTotal Budget: ', str(master_dict[team]['budget']), \
+              '\tSlots Needed: ', str(master_dict[team]['empty_slots']) )
+        print('-'*82)

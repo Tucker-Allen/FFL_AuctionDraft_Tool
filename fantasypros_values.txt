@@ -1,0 +1,311 @@
+#	QB	Value
+1.	Patrick Mahomes, KC	$31
+2.	Deshaun Watson, HOU	$22
+3.	Aaron Rodgers, GB	$18
+4.	Matt Ryan, ATL	$16
+5.	Cam Newton, CAR	$14
+6.	Andrew Luck, IND	$12
+7.	Drew Brees, NO	$11
+8.	Jameis Winston, TB	$10
+9.	Dak Prescott, DAL	$10
+10.	Carson Wentz, PHI	$10
+11.	Baker Mayfield, CLE	$10
+12.	Jared Goff, LAR	$9
+13.	Ben Roethlisberger, PIT	$9
+14.	Lamar Jackson, BAL	$7
+15.	Russell Wilson, SEA	$7
+16.	Tom Brady, NE	$7
+17.	Kirk Cousins, MIN	$6
+18.	Mitch Trubisky, CHI	$6
+19.	Philip Rivers, LAC	$5
+20.	Kyler Murray, ARI	$4
+21.	Josh Allen, BUF	$2
+22.	Jimmy Garoppolo, SF	$1
+23.	Derek Carr, OAK	$0
+24.	Matthew Stafford, DET	$0
+25.	Andy Dalton, CIN	$0
+26.	Sam Darnold, NYJ	$0
+27.	Marcus Mariota, TEN	$0
+28.	Nick Foles, JAC	$0
+29.	Joe Flacco, DEN	$0
+30.	Eli Manning, NYG	$0
+31.	Ryan Fitzpatrick, MIA	$0
+32.	Dwayne Haskins, WAS	$0
+#	DST	Value
+1.	Chicago Bears	$2
+2.	Los Angeles Rams	$2
+3.	New Orleans Saints	$1
+4.	Baltimore Ravens	$1
+5.	Cleveland Browns	$1
+6.	Minnesota Vikings	$1
+7.	Indianapolis Colts	$1
+8.	Pittsburgh Steelers	$1
+9.	Philadelphia Eagles	$1
+10.	Los Angeles Chargers	$1
+11.	Buffalo Bills	$1
+12.	Denver Broncos	$1
+13.	Houston Texans	$1
+14.	New England Patriots	$1
+15.	Carolina Panthers	$0
+16.	Jacksonville Jaguars	$0
+17.	Kansas City Chiefs	$0
+18.	Arizona Cardinals	$0
+19.	Washington Redskins	$0
+20.	Seattle Seahawks	$0
+21.	Dallas Cowboys	$0
+22.	Green Bay Packers	$0
+23.	Tennessee Titans	$0
+24.	New York Jets	$0
+25.	Atlanta Falcons	$0
+26.	San Francisco 49ers	$0
+27.	Detroit Lions	$0
+28.	Cincinnati Bengals	$0
+29.	New York Giants	$0
+30.	Tampa Bay Buccaneers	$0
+31.	Miami Dolphins	$0
+32.	Oakland Raiders	$0
+#	RB	Value
+1.	Saquon Barkley, NYG	$64
+2.	Christian McCaffrey, CAR	$58
+3.	Alvin Kamara, NO	$57
+4.	Ezekiel Elliott, DAL	$54
+5.	Le'Veon Bell, NYJ	$45
+6.	David Johnson, ARI	$44
+7.	James Conner, PIT	$44
+8.	Todd Gurley, LAR	$42
+9.	Joe Mixon, CIN	$41
+10.	Nick Chubb, CLE	$40
+11.	Dalvin Cook, MIN	$39
+12.	Damien Williams, KC	$35
+13.	Melvin Gordon, LAC	$34
+14.	Derrick Henry, TEN	$34
+15.	Kerryon Johnson, DET	$34
+16.	Chris Carson, SEA	$34
+17.	Leonard Fournette, JAC	$33
+18.	Marlon Mack, IND	$32
+19.	Aaron Jones, GB	$30
+20.	Devonta Freeman, ATL	$29
+21.	Josh Jacobs, OAK	$28
+22.	Sony Michel, NE	$28
+23.	David Montgomery, CHI	$24
+24.	Mark Ingram, BAL	$24
+25.	Phillip Lindsay, DEN	$22
+26.	Lamar Miller, HOU	$21
+27.	Kenyan Drake, MIA	$19
+28.	Tevin Coleman, SF	$16
+29.	James White, NE	$15
+30.	Derrius Guice, WAS	$13
+31.	Miles Sanders, PHI	$12
+32.	Austin Ekeler, LAC	$12
+33.	Peyton Barber, TB	$12
+34.	Tarik Cohen, CHI	$10
+35.	Latavius Murray, NO	$10
+36.	LeSean McCoy, BUF	$9
+37.	Rashaad Penny, SEA	$9
+38.	Jordan Howard, PHI	$9
+39.	Royce Freeman, DEN	$7
+40.	Darrell Henderson, LAR	$7
+41.	Kalen Ballage, MIA	$6
+42.	Matt Breida, SF	$6
+43.	Duke Johnson, HOU	$6
+44.	Dion Lewis, TEN	$5
+45.	Adrian Peterson, WAS	$5
+46.	Ronald Jones II, TB	$5
+47.	Jaylen Samuels, PIT	$5
+48.	C.J. Anderson, DET	$4
+49.	Nyheim Hines, IND	$4
+50.	Jamaal Williams, GB	$4
+51.	Ito Smith, ATL	$4
+52.	Chris Thompson, WAS	$3
+53.	Jalen Richard, OAK	$3
+54.	Kareem Hunt, CLE	$3
+55.	Giovani Bernard, CIN	$3
+56.	Damien Harris, NE	$3
+57.	Gus Edwards, BAL	$2
+58.	Carlos Hyde, KC	$2
+59.	Devin Singletary, BUF	$2
+60.	Alexander Mattison, MIN	$2
+61.	Jerick McKinnon, SF	$2
+62.	Frank Gore, BUF	$2
+63.	Justice Hill, BAL	$2
+64.	Justin Jackson, LAC	$2
+65.	Rodney Anderson, CIN	$1
+66.	Mike Davis, CHI	$1
+67.	Alfred Blue, JAC	$0
+68.	Darwin Thompson, KC	$0
+69.	Tony Pollard, DAL	$0
+70.	Bilal Powell, NYJ	$0
+71.	Doug Martin, OAK	$0
+72.	Chase Edmonds, ARI	$0
+73.	Rex Burkhead, NE	$0
+74.	Ty Montgomery, NYJ	$0
+75.	Zach Zenner, DET	$0
+76.	Corey Clement, PHI	$0
+77.	Dontrell Hilliard, CLE	$0
+78.	Ty Johnson, DET	$0
+79.	Theo Riddick, DEN	$0
+80.	T.J. Yeldon, BUF	$0
+81.	Elijah McGuire, NYJ	$0
+82.	Wayne Gallman, NYG	$0
+83.	Ryquell Armstead, JAC	$0
+84.	Malcolm Brown, LAR	$0
+85.	Cameron Artis-Payne, CAR	$0
+86.	Brandon Bolden, NE	$0
+87.	Brian Hill, ATL	$0
+88.	J.D. McKissic, SEA	$0
+89.	Reggie Bonnafon, CAR	$0
+90.	Dexter Williams, GB	$0
+91.	Kyle Juszczyk, SF	$0
+92.	Jordan Wilkins, IND	$0
+93.	Andre Ellington, TB	$0
+94.	Devontae Booker, DEN	$0
+95.	Josh Ferguson, HOU	$0
+96.	Darren Sproles, PHI	$0
+97.	Damarea Crockett, HOU	$0
+98.	Kenneth Dixon, BAL	$0
+99.	Myles Gaskin, MIA	$0
+#	WR	Value
+1.	DeAndre Hopkins, HOU	$48
+2.	Julio Jones, ATL	$48
+3.	Tyreek Hill, KC	$46
+4.	Davante Adams, GB	$45
+5.	JuJu Smith-Schuster, PIT	$43
+6.	Michael Thomas, NO	$40
+7.	Mike Evans, TB	$39
+8.	Odell Beckham Jr., CLE	$38
+9.	Antonio Brown, OAK	$36
+10.	Keenan Allen, LAC	$34
+11.	T.Y. Hilton, IND	$32
+12.	Adam Thielen, MIN	$30
+13.	Brandin Cooks, LAR	$29
+14.	Julian Edelman, NE	$29
+15.	Amari Cooper, DAL	$28
+16.	Robert Woods, LAR	$27
+17.	Stefon Diggs, MIN	$27
+18.	Tyler Lockett, SEA	$26
+19.	Kenny Golladay, DET	$24
+20.	Cooper Kupp, LAR	$22
+21.	Chris Godwin, TB	$21
+22.	Mike Williams, LAC	$20
+23.	Tyler Boyd, CIN	$20
+24.	Alshon Jeffery, PHI	$18
+25.	A.J. Green, CIN	$18
+26.	Allen Robinson, CHI	$16
+27.	D.J. Moore, CAR	$16
+28.	Sammy Watkins, KC	$16
+29.	Calvin Ridley, ATL	$16
+30.	Robby Anderson, NYJ	$14
+31.	Josh Gordon, NE	$14
+32.	Jarvis Landry, CLE	$14
+33.	Marvin Jones, DET	$13
+34.	Christian Kirk, ARI	$12
+35.	Dante Pettis, SF	$12
+36.	Sterling Shepard, NYG	$11
+37.	Will Fuller, HOU	$11
+38.	Curtis Samuel, CAR	$11
+39.	Dede Westbrook, JAC	$10
+40.	Emmanuel Sanders, DEN	$10
+41.	Corey Davis, TEN	$10
+42.	Larry Fitzgerald, ARI	$8
+43.	Kenny Stills, MIA	$7
+44.	Courtland Sutton, DEN	$7
+45.	DeSean Jackson, PHI	$7
+46.	Mohamed Sanu, ATL	$6
+47.	Michael Gallup, DAL	$6
+48.	Donte Moncrief, PIT	$6
+49.	Jamison Crowder, NYJ	$5
+50.	Tyrell Williams, OAK	$5
+51.	Geronimo Allison, GB	$5
+52.	Ted Ginn, NO	$5
+53.	John Brown, BUF	$4
+54.	Marquez Valdes-Scantling, GB	$4
+55.	Devin Funchess, IND	$4
+56.	Anthony Miller, CHI	$3
+57.	Albert Wilson, MIA	$3
+58.	DaeSean Hamilton, DEN	$3
+59.	Devante Parker, MIA	$2
+60.	James Washington, PIT	$2
+61.	Keke Coutee, HOU	$2
+62.	D.K. Metcalf, SEA	$2
+63.	Golden Tate, NYG	$2
+64.	Marquise Goodwin, SF	$2
+65.	Adam Humphries, TEN	$1
+66.	Marqise Lee, JAC	$1
+67.	Paul Richardson, WAS	$1
+68.	Zay Jones, BUF	$1
+69.	Marquise Brown, BAL	$1
+70.	Robert Foster, BUF	$1
+71.	Deebo Samuel, SF	$0
+72.	Taylor Gabriel, CHI	$0
+73.	Quincy Enunwa, NYJ	$0
+74.	Parris Campbell, IND	$0
+75.	Josh Doctson, WAS	$0
+76.	Danny Amendola, DET	$0
+77.	Tre'Quan Smith, NO	$0
+78.	David Moore, SEA	$0
+79.	Cole Beasley, BUF	$0
+80.	Willie Snead, BAL	$0
+81.	Randall Cobb, DAL	$0
+82.	Rashard Higgins, CLE	$0
+83.	Nelson Agholor, PHI	$0
+84.	Breshad Perriman, TB	$0
+85.	N'Keal Harry, NE	$0
+86.	Chris Conley, JAC	$0
+87.	Miles Boykin, BAL	$0
+88.	John Ross, CIN	$0
+89.	A.J. Brown, TEN	$0
+90.	Andy Isabella, ARI	$0
+91.	Mecole Hardman, KC	$0
+92.	Terry McLaurin, WAS	$0
+93.	Travis Benjamin, LAC	$0
+94.	Trey Quinn, WAS	$0
+95.	Cody Latimer, NYG	$0
+96.	D.J. Chark, JAC	$0
+#	TE	Value
+1.	Travis Kelce, KC	$39
+2.	George Kittle, SF	$30
+3.	Zach Ertz, PHI	$24
+4.	O.J. Howard, TB	$17
+5.	Jared Cook, NO	$15
+6.	Evan Engram, NYG	$14
+7.	Hunter Henry, LAC	$12
+8.	Vance McDonald, PIT	$9
+9.	Eric Ebron, IND	$8
+10.	David Njoku, CLE	$7
+11.	Delanie Walker, TEN	$5
+12.	Jordan Reed, WAS	$5
+13.	Mark Andrews, BAL	$5
+14.	Austin Hooper, ATL	$5
+15.	Jimmy Graham, GB	$3
+16.	Greg Olsen, CAR	$3
+17.	Trey Burton, CHI	$3
+18.	Kyle Rudolph, MIN	$3
+19.	Jack Doyle, IND	$2
+20.	Noah Fant, DEN	$1
+21.	T.J. Hockenson, DET	$1
+22.	Tyler Eifert, CIN	$1
+23.	Jason Witten, DAL	$0
+24.	Chris Herndon IV, NYJ	$0
+25.	Dallas Goedert, PHI	$0
+26.	Darren Waller, OAK	$0
+27.	Will Dissly, SEA	$0
+#	K	Value
+1.	Greg Zuerlein, LAR	$1
+2.	Justin Tucker, BAL	$1
+3.	Stephen Gostkowski, NE	$1
+4.	Wil Lutz, NO	$1
+5.	Harrison Butker, KC	$1
+6.	Ka'imi Fairbairn, HOU	$1
+7.	Robbie Gould, SF	$1
+8.	Michael Badgley, LAC	$1
+9.	Matt Gay, TB	$1
+10.	Adam Vinatieri, IND	$1
+11.	Jake Elliott, PHI	$1
+12.	Brett Maher, DAL	$1
+13.	Mason Crosby, GB	$1
+14.	Giorgio Tavecchio, ATL	$1
+15.	Matt Prater, DET	$0
+16.	Austin Seibert, CLE	$0
+17.	Ryan Succop, TEN	$0
+18.	Jason Myers, SEA	$0
+19.	Graham Gano, CAR	$0
