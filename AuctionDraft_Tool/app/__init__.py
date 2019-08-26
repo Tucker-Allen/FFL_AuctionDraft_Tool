@@ -1,25 +1,47 @@
-# players = {'DeSean Jackson, WAS':   {'name': 'DeSean Jackson, WAS',     'position': 'WR', 'pre_draft$': 13},
-#            'Tom Brady, NEP':        {'name': 'Tom Brady, NEP',          'position': 'QB', 'pre_draft$': 15},
-#            'Jimmy Graham, GNB':     {'name': 'Jimmy Graham, GNB',       'position': 'TE', 'pre_draft$': 10},
-#            'Jamison Crowder, WAS':  {'name': 'Jamison Crowder, WAS',    'position': 'WR', 'pre_draft$': 12},
-#            'LeVeon Bell, NYJ':      {'name': 'LeVeon Bell, NYJ',        'position': 'RB', 'pre_draft$': 50},
-#            'Mark Ingram, BAL':      {'name': 'Mark Ingram, BAL',        'position': 'RB', 'pre_draft$': 35},
-#            'Odell Beckham, CLE':    {'name': 'Odell Beckham, CLE',      'position': 'WR', 'pre_draft$': 65},
-#            'Joe Mixon, CIN':        {'name': 'Joe Mixon, CIN',          'position': 'RB', 'pre_draft$': 30},
-#            'James Conner, PIT':     {'name': 'James Conner, PIT',       'position': 'RB', 'pre_draft$': 15},
-#            'Lou FakeGuy, XYZ':      {'name': 'Lou FakeGuy, XYZ',        'position': 'RB', 'pre_draft$': 80},
-#            'UNKNOWN PLAYER, QB':    {'name': 'UNKNOWN PLAYER, QB',      'position': 'QB', 'pre_draft$': 0},
-#            'UNKNOWN PLAYER, RB':    {'name': 'UNKNOWN PLAYER, RB',      'position': 'RB', 'pre_draft$': 0},
-#            'UNKNOWN PLAYER, WR':    {'name': 'UNKNOWN PLAYER, WR',      'position': 'WR', 'pre_draft$': 0},
-#            'UNKNOWN PLAYER, TE':    {'name': 'UNKNOWN PLAYER, TE',      'position': 'TE', 'pre_draft$': 0},
-#            'UNKNOWN PLAYER, D/ST':  {'name': 'UNKNOWN PLAYER, D/ST',    'position': 'D/ST', 'pre_draft$': 0},
-#            'UNKNOWN PLAYER, K':     {'name': 'UNKNOWN PLAYER, K',       'position': 'K', 'pre_draft$': 0},}
+import os
+from yaml import load
+import pickle
 
-# Adjust these as needed
-my_team = 'Local Florida Man'
-fantasy_teams = ['Local Florida Man', 'Bob Loblaw', 'Team 33', 'Nelson Studs', 'Belichick This', 'Brett Favres Next Team',
-                 'New Yawk Mongos', 'Fear the Beard', 'David S. Pumpkins', 'Part Deux', 'K Factor', 'Mustangs',
-                 'oh leh dew it', 'Revenge With a Fifth']
+# For slurping files
+def slurp(fi):
+    with open(fi, mode="r") as fh:
+        return fh.read()
+
+# For loading yaml configs
+def config_loader(config_path):
+    ''' Error catching for loading .yaml config files'''
+    try:
+        assert os.path.exists(config_path)
+    except AssertionError:
+        print('!!Config file of path: ', config_path, ' not found.')
+        raise AssertionError()
+    try:
+        loaded = load(slurp(config_path))
+    except Exception as ex:
+        print('Exception: ', ex)
+        print('!!Something broke during loading of yaml config file at path: ', config_path)
+        raise Exception()
+    try:
+        assert isinstance(loaded, (dict, list))
+    except AssertionError:
+        print('!!Consumer config file not properly formatted as yaml, dictionary or list type not loaded')
+        raise AssertionError()
+    return loaded
+
+players = pickle.load(open('AuctionDraft_Tool/app/all_players.sav', 'rb'))
+
+project_dir = os.path.dirname(os.path.abspath(__file__))
+config_path = os.path.join(project_dir, "config/fantasy_teams.yaml")
+fantasy_teams = config_loader(config_path)
+
+#initialize tiers
+tiers_remaining = {'RB': {'tier_1': 0, 'tier_2': 0, 'tier_3': 0},
+                   'WR': {'tier_1': 0, 'tier_2': 0, 'tier_3': 0, 'tier_4': 0},
+                   'TE': {'tier_1': 0, 'tier_2': 0, 'tier_3': 0}}
+
+for player in players:
+    if players[player]['position'] in ['RB', 'WR', 'TE'] and players[player]['tier']:
+        tiers_remaining[ players[player]['position'] ][ players[player]['tier'] ] += 1
 
 # Currently, hardcoded for this format
 slots = ['QB', 'RB1', 'RB2', 'WR1', 'WR2', 'TE', 'FLX', 'D/ST', 'K',
@@ -36,6 +58,7 @@ for fantasy_team in fantasy_teams:
         master_dict[fantasy_team]['slots'][slot] = {'Player': None,
                                                     'Position': None,
                                                     'Price_Paid': 0}
+    master_dict[fantasy_team]['max_bid'] = master_dict[fantasy_team]['budget'] - (master_dict[fantasy_team]['empty_slots'] - 1)
 
 bench_heir = ['BE1', 'BE2', 'BE3', 'BE4', 'BE5', 'BE6']
 rb_heir    = ['RB1', 'RB2'] + bench_heir
@@ -48,3 +71,20 @@ dst_heir   = ['D/ST']       + bench_heir
 heir_dict = {'RB': rb_heir, 'WR': wr_heir, 'QB': qb_heir, 'TE': te_heir, 'K': k_heir, 'D/ST': dst_heir}
 
 major_starting_slots = ['QB', 'RB1', 'RB2', 'WR1', 'WR2', 'TE', 'FLX']
+
+
+def pretty_display(teams_to_display):
+    for competition in teams_to_display:
+        total_empty_slots = count_all_starter_slots(competition[0])
+        print(competition[0])
+        print('\t\tMax bid: ',  '$'+str(competition[1]), \
+              '\tPrimary slots: ', str(competition[2]), \
+              '\tFlex slots:    ', str(competition[3]), \
+              '\tTotal Starter Slots: ', total_empty_slots)
+
+def count_all_starter_slots(fantasy_team):
+    empty_count = 0
+    for slot in major_starting_slots:
+        if not master_dict[fantasy_team]['slots'][slot]['Player']:
+            empty_count += 1
+    return empty_count
