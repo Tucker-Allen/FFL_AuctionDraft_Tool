@@ -66,6 +66,9 @@ def player_up(a_player: str):
 
 
 def player_bought(player: dict, fantasy_team: str, price_paid: int):
+    if not player['name'].startswith('UNKNOWN'):
+        players.pop(player['name'])
+        print('Player Popped')
     master_dict[fantasy_team]['budget'] -= price_paid
     master_dict[fantasy_team]['empty_slots'] -= 1
     master_dict[fantasy_team]['max_bid'] = master_dict[fantasy_team]['budget'] - (master_dict[fantasy_team]['empty_slots'] - 1)
@@ -144,6 +147,10 @@ def count_missing_starters(fantasy_team):
         if not master_dict[fantasy_team]['slots'][slot]['Player']:
             missing_starters['TE'] += 1
     return missing_starters
+
+# def list_my_top_5():
+#     players_list = []
+#     for player in
 
 # WHERE THE ACTUAL PROGRAM GETS GOING !!!!! ----------------------------------------------------
 

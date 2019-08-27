@@ -29,6 +29,13 @@ def config_loader(config_path):
     return loaded
 
 players = pickle.load(open('AuctionDraft_Tool/app/all_players.sav', 'rb'))
+for unknown in ['UNKNOWN QB', 'UNKNOWN RB', 'UNKNOWN WR', 'UNKNOWN TE', 'UNKNOWN D/ST', 'UNKNOWN K']:
+    players[unknown] = {'name': 'UNKNOWN',
+                        'position': unknown.split()[1],
+                        'tier': None,
+                        'fpros_pre_draft$': 0,
+                        'espn_pre_draft$': 0,
+                        'my_pre_draft$': 0}
 
 project_dir = os.path.dirname(os.path.abspath(__file__))
 config_path = os.path.join(project_dir, "config/fantasy_teams.yaml")
