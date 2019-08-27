@@ -25,7 +25,7 @@ def player_up(a_player: str):
     competing_teams = []
     for fantasy_team in fantasy_teams:
         max_bid = master_dict[fantasy_team]['budget'] - ( (master_dict[fantasy_team]['empty_slots']-1) *1)
-        if pos in ['QB', 'D/ST', 'K']:
+        if pos in ['QB', 'DST', 'K']:
             if not master_dict[fantasy_team]['slots'][pos]['Player']:
                 competing_teams.append( (fantasy_team, max_bid, 1, 0) )
 
@@ -68,7 +68,6 @@ def player_up(a_player: str):
 def player_bought(player: dict, fantasy_team: str, price_paid: int):
     if not player['name'].startswith('UNKNOWN'):
         players.pop(player['name'])
-        print('Player Popped')
     master_dict[fantasy_team]['budget'] -= price_paid
     master_dict[fantasy_team]['empty_slots'] -= 1
     master_dict[fantasy_team]['max_bid'] = master_dict[fantasy_team]['budget'] - (master_dict[fantasy_team]['empty_slots'] - 1)
@@ -148,9 +147,14 @@ def count_missing_starters(fantasy_team):
             missing_starters['TE'] += 1
     return missing_starters
 
-# def list_my_top_5():
-#     players_list = []
-#     for player in
+def list_my_top_5():
+    players_list = []
+    for player in players:
+        players_list.append( (player, players[player]['my_pre_draft$']) )
+
+    my_sorted = sorted(players_list, key = lambda x: x[1], reverse=True)
+    for player_tuple in my_sorted[:5]:
+        print(players[player_tuple[0]])
 
 # WHERE THE ACTUAL PROGRAM GETS GOING !!!!! ----------------------------------------------------
 
@@ -168,12 +172,15 @@ while running:
     player_block_dict = players[on_the_block]
     player_bought(player_block_dict, bought_by, int(cost))
 
+    list_my_top_5()
+    print('-'*82)
     for i in tiers_remaining:
         print(i, tiers_remaining[i])
+    print('-'*82)
     for team in fantasy_teams:
         missing_starters = count_missing_starters(team)
         # Sort by budget
         print(team)
-        print(missing_starters, '\tTotal Budget: ', str(master_dict[team]['budget']), \
+        print('\t', missing_starters, '\tTotal Budget: ', str(master_dict[team]['budget']), \
               '\tSlots Needed: ', str(master_dict[team]['empty_slots']), '\tMax Bid: ', master_dict[team]['max_bid'])
         print('-'*82)

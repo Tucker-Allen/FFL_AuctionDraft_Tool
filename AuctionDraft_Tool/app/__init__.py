@@ -29,7 +29,7 @@ def config_loader(config_path):
     return loaded
 
 players = pickle.load(open('AuctionDraft_Tool/app/all_players.sav', 'rb'))
-for unknown in ['UNKNOWN QB', 'UNKNOWN RB', 'UNKNOWN WR', 'UNKNOWN TE', 'UNKNOWN D/ST', 'UNKNOWN K']:
+for unknown in ['UNKNOWN QB', 'UNKNOWN RB', 'UNKNOWN WR', 'UNKNOWN TE', 'UNKNOWN DST', 'UNKNOWN K']:
     players[unknown] = {'name': 'UNKNOWN',
                         'position': unknown.split()[1],
                         'tier': None,
@@ -51,7 +51,7 @@ for player in players:
         tiers_remaining[ players[player]['position'] ][ players[player]['tier'] ] += 1
 
 # Currently, hardcoded for this format
-slots = ['QB', 'RB1', 'RB2', 'WR1', 'WR2', 'TE', 'FLX', 'D/ST', 'K',
+slots = ['QB', 'RB1', 'RB2', 'WR1', 'WR2', 'TE', 'FLX', 'DST', 'K',
          'BE1', 'BE2', 'BE3', 'BE4', 'BE5', 'BE6']
 
 master_dict = {}
@@ -73,9 +73,9 @@ wr_heir    = ['WR1', 'WR2'] + bench_heir
 qb_heir    = ['QB']         + bench_heir
 te_heir    = ['TE']         + bench_heir
 k_heir     = ['K']          + bench_heir
-dst_heir   = ['D/ST']       + bench_heir
+dst_heir   = ['DST']       + bench_heir
 
-heir_dict = {'RB': rb_heir, 'WR': wr_heir, 'QB': qb_heir, 'TE': te_heir, 'K': k_heir, 'D/ST': dst_heir}
+heir_dict = {'RB': rb_heir, 'WR': wr_heir, 'QB': qb_heir, 'TE': te_heir, 'K': k_heir, 'DST': dst_heir}
 
 major_starting_slots = ['QB', 'RB1', 'RB2', 'WR1', 'WR2', 'TE', 'FLX']
 
