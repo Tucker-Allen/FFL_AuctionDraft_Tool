@@ -1,13 +1,14 @@
 from prompt_toolkit import prompt
 from prompt_toolkit.completion.word_completer import WordCompleter
-from app import players, fantasy_teams
+from AuctionDraftTool import players, fantasy_teams
 
 TeamCompleter = WordCompleter(fantasy_teams,
                               ignore_case=True)
 
 def welcome_screen_prompt():
+    print('\n')
     print('Welcome to the Fantasy Auction draft Tool Kit! ~by Tucker Allen (https://github.com/Tucker-Allen)')
-    prompt('Press any key to continue')
+    prompt('[Press any key to continue]')
 
 def on_the_block_prompt():
     PlayerCompleter = WordCompleter(list(players),

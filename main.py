@@ -1,6 +1,8 @@
-import os
-from app import players, fantasy_teams, master_dict, heir_dict, major_starting_slots, pretty_display, tiers_remaining, count_all_starter_slots
-from app.prompts import welcome_screen_prompt, on_the_block_prompt, bought_by_prompt, cost_prompt
+from AuctionDraftTool import fantasy_teams, players, tiers_remaining
+from AuctionDraftTool import master_dict, heir_dict
+from AuctionDraftTool.display import pretty_display, starting_display
+from AuctionDraftTool.display.prompts import welcome_screen_prompt, on_the_block_prompt
+from AuctionDraftTool.display.prompts import bought_by_prompt, cost_prompt
 
 
 def player_up(a_player: str):
@@ -130,7 +132,6 @@ def shift_the_rest_down(this_player, heir_list, last_slot, fantasy_team, price_p
         print('Some other Error, something broke')
 
 
-
 def count_missing_starters(fantasy_team):
     missing_starters = {'QB': 0, 'RB': 0, 'WR': 0, 'TE': 0}
     for slot in ['QB']:
@@ -159,6 +160,7 @@ def list_my_top_5():
 # WHERE THE ACTUAL PROGRAM GETS GOING !!!!! ----------------------------------------------------
 
 welcome_screen_prompt()
+starting_display()
 
 running = True
 while running:

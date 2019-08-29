@@ -1,0 +1,64 @@
+# List all fantasy teams in your auction draft here
+starting_budget: 200
+fantasy_teams:
+  - Local Florida Man
+  - Bob Loblaw
+  - Lamartina
+  - Nelson Studs
+  - Belichick This
+  - Brett Favres Next Team
+  - New Yawk Mongos
+  - Fear the Beard
+  - David S. Pumpkins
+  - Part Deux
+  - K Factor
+  - Mustangs
+  - oh leh dew it
+  - Revenge With a Fifth
+num_slots:
+  # Indicate the number of starting slots for each position here
+  starters:
+    QB: 1
+    RB: 2
+    WR: 2
+    TE: 1
+    FLX: 1
+    K: 1
+    DST: 1
+    # Indicate the number of bench slots here
+  bench:
+    BE: 6
+# These are presently based on espn_pre_draft$
+# Read as "everything equal to or above this number is that tier"
+# Do not add or delete tiers, currently structured for 4 all posititions
+tier_minimums:
+  QB:
+    tier_1: 10
+    tier_2: 3
+    tier_3: 0
+    tier_4: 0
+  RB:
+    tier_1: 50
+    tier_2: 30
+    tier_3: 1
+    tier_4: 0
+  WR:
+    tier_1: 40
+    tier_2: 29
+    tier_3: 9
+    tier_4: 0
+  TE:
+    tier_1: 25
+    tier_2: 5
+    tier_3: 0
+    tier_4: 0
+  K:
+    tier_1: 0
+    tier_2: 0
+    tier_3: 0
+    tier_4: 0
+  DST:
+    tier_1: 1
+    tier_2: 0
+    tier_3: 0
+    tier_4: 0
